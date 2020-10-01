@@ -40,7 +40,14 @@ const pedirCarta = () => {
 }
 
 
-crearDeck();
-console.log(deck);
-console.log(pedirCarta());
-console.log(deck);
+const valorCarta = (carta) => {
+
+    const valor = carta.substring(0, carta.length-1);
+
+    return ( isNaN(valor) )  ?
+           ( valor === 'A' ) ? 11 : 10
+           : puntos = valor * 1;
+}
+
+
+console.log(valorCarta('3D'));
