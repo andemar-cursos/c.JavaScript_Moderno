@@ -1,7 +1,16 @@
 
+//Variables
 let deck        = [];
 const tipos     = ['C', 'D', 'H', 'S'];
 const specials  = ['A', 'J', 'Q', 'K'];
+let puntosJugador     = 0;
+let puntosComputadora = 0;
+
+//Html
+const btnPedir  = document.querySelector('#btnPedir');
+const sumaJugador = document.querySelectorAll('small');
+
+
 
 //Funcion para crear baraja
 const crearDeck = () => {
@@ -30,7 +39,8 @@ const pedirCarta = () => {
 
     if(deck.length >= 1){
         // carta = deck.pop();
-        carta = deck.splice(0, 1);
+        //carta = deck.splice(0, 1); Se cambio, debido a que retornaba un array.
+        carta = deck.shift();
     }
     else{
         throw 'No hay cartas en el deck';
@@ -49,5 +59,18 @@ const valorCarta = (carta) => {
            : puntos = valor * 1;
 }
 
+//Inicio del programa
 
-console.log(valorCarta('3D'));
+crearDeck();
+
+//Eventos
+btnPedir.addEventListener('click', () => {
+    
+    const carta = pedirCarta();
+
+    puntosJugador += valorCarta(carta);
+    sumaJugador[0].innerText = puntosJugador;
+
+    
+
+});
