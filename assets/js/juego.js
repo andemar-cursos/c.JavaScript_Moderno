@@ -9,6 +9,7 @@ let puntosComputadora = 0;
 //Html
 const btnPedir          = document.querySelector('#btnPedir');
 const btnDetener        = document.querySelector('#btnDetener');
+const btnNuevo          = document.querySelector('#btnNuevo');
 const sumaJugador       = document.querySelectorAll('small');
 const divCartasJugador  = document.querySelector('#jugador-cartas');
 const divCartasComput   = document.querySelector('#computadora-cartas');
@@ -79,6 +80,21 @@ const turnoComputadora = (puntosMinimos) => {
     }while((puntosComputadora < puntosMinimos) &&
            (puntosMinimos <= 21));
 
+    setTimeout(() => {
+        if(puntosJugador === puntosComputadora){
+                alert('Nadie gana');
+            }else if(puntosJugador > 21){
+                alert('Perdiste !!');
+            }else if(puntosComputadora > 21){
+                alert('Ganaste !!');
+            }else if(puntosComputadora > puntosJugador){
+                alert('Perdiste !!');
+            }else if(puntosJugador > puntosComputadora){
+                alert('Ganaste !!');
+            }else{
+                alert('Ganaste !!');
+            }
+    }, 20);
 }
 
 
@@ -107,12 +123,13 @@ btnPedir.addEventListener('click', () => {
     if(puntosJugador > 21) {
         console.warn('Perdiste :P');
         btnPedir.disabled   = true;
-        btnDetener.disables = true;
+        btnDetener.disabled = true;
         turnoComputadora(puntosJugador);
     } else if(puntosJugador === 21) {
         console.warn('21, e.e');
         btnPedir.disabled   = true;
-        btnDetener.disables = true;
+        btnDetener.disabled = true;
+        turnoComputadora(puntosJugador);
     }
 });
 
@@ -122,4 +139,16 @@ btnDetener.addEventListener('click', () => {
     btnPedir.disabled = true;
     btnDetener.disabled = true;
     turnoComputadora(puntosJugador);
+});
+
+btnNuevo.addEventListener('click',() => {
+
+    btnDetener.disabled = false;
+    btnPedir.disabled = false;
+    puntosJugador = 0;
+    puntosComputadora = 0;
+    sumaJugador[0].innerText = 0;
+    sumaJugador[1].innerText = 0;
+    document.querySelectorAll('.carta').forEach(carta => carta.remove());
+    crearDeck();
 });
