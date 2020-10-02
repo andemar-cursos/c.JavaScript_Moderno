@@ -3,23 +3,35 @@
     'use strict'
 
     //Variables
-    let deck        = [];
-    const tipos     = ['C', 'D', 'H', 'S'];
-    const specials  = ['A', 'J', 'Q', 'K'];
-    let puntosJugador     = 0;
-    let puntosComputadora = 0;
+    let deck        = [],
+        puntosJugadores = [];
+
+
+    const tipos     = ['C', 'D', 'H', 'S'],
+        specials  = ['A', 'J', 'Q', 'K'];
 
     //Html
-    const btnPedir          = document.querySelector('#btnPedir');
-    const btnDetener        = document.querySelector('#btnDetener');
-    const btnNuevo          = document.querySelector('#btnNuevo');
-    const sumaJugador       = document.querySelectorAll('small');
-    const divCartasJugador  = document.querySelector('#jugador-cartas');
-    const divCartasComput   = document.querySelector('#computadora-cartas');
+    const btnPedir         = document.querySelector('#btnPedir'),
+        btnDetener       = document.querySelector('#btnDetener'),
+        btnNuevo         = document.querySelector('#btnNuevo'),
+        sumaJugador      = document.querySelectorAll('small'),
+        divCartasJugador = document.querySelector('#jugador-cartas'),
+        divCartasComput  = document.querySelector('#computadora-cartas');
 
+
+    //Esta funcion inicializa el juego
+    const inicializarJuego = ( numJugadores = 2) => {
+        deck = crearDeck();
+
+        for(let i = 0; i < numJugadores; i++){
+            puntosJugadores[i] = 0;
+        }
+    }
 
     //Funcion para crear baraja
     const crearDeck = () => {
+
+        deck = [];
 
         for(let i = 2; i < 11; i++) {
             for(let tipo of tipos) {
@@ -32,27 +44,16 @@
                 deck.push(special + tipo);
             }
         }
-
-        deck = _.shuffle(deck);
-
-        return deck;
+        return _.shuffle(deck);
     }
 
     //Esta funcion me permite tomar una carta
     const pedirCarta = () => {
-        
-        let carta = '';
 
-        if(deck.length >= 1){
-            // carta = deck.pop();
-            //carta = deck.splice(0, 1); Se cambio, debido a que retornaba un array.
-            carta = deck.shift();
-        }
-        else{
+        if(deck.length === 0)
             throw 'No hay cartas en el deck';
-        }
-        
-        return carta;
+            
+        return deck.shift();;
     }
 
 
@@ -60,9 +61,13 @@
 
         const valor = carta.substring(0, carta.length-1);
 
-        return ( isNaN(valor) )  ?
-               ( valor === 'A' ) ? 11 : 10
-               : valor * 1;
+        return  ( isNaN(valor) )  ?
+                ( valor === 'A' ) ? 11 : 10
+                : valor * 1;
+    }
+
+    const aumularPuntos = () => {
+
     }
 
 
@@ -106,10 +111,6 @@
 
 
 
-    //Inicio del programa
-
-    crearDeck();
-
     //Eventos
     btnPedir.addEventListener('click', () => {
         
@@ -124,12 +125,12 @@
         divCartasJugador.append(imgCarta);
 
         if(puntosJugador > 21) {
-            console.warn('Perdiste :P');
+
             btnPedir.disabled   = true;
             btnDetener.disabled = true;
             turnoComputadora(puntosJugador);
         } else if(puntosJugador === 21) {
-            console.warn('21, e.e');
+
             btnPedir.disabled   = true;
             btnDetener.disabled = true;
             turnoComputadora(puntosJugador);
@@ -146,6 +147,8 @@
 
     btnNuevo.addEventListener('click',() => {
 
+        inicializarJuego();
+
         btnDetener.disabled = false;
         btnPedir.disabled = false;
         puntosJugador = 0;
@@ -153,6 +156,5 @@
         sumaJugador[0].innerText = 0;
         sumaJugador[1].innerText = 0;
         document.querySelectorAll('.carta').forEach(carta => carta.remove());
-        crearDeck();
     });
 })();
