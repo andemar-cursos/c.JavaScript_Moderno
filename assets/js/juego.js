@@ -1,5 +1,4 @@
-
-(() => {
+const miModulo = (() => {
     'use strict'
 
     //Variables
@@ -21,10 +20,16 @@
     //Esta funcion inicializa el juego
     const inicializarJuego = ( numJugadores = 2) => {
         deck = crearDeck();
+        puntosJugadores = [];
 
         for(let i = 0; i < numJugadores; i++){
             puntosJugadores[i] = 0;
         }
+
+        sumaJugador.forEach(jugador => jugador.innerText = 0);
+        document.querySelectorAll('.carta').forEach(carta => carta.remove());
+        btnDetener.disabled = false;
+        btnPedir.disabled = false;
     }
 
     //Funcion para crear baraja
@@ -82,20 +87,9 @@
         divCartasJugadores[jugador].append(imgCarta);
     }
 
+    const determinarGanador = () => {
 
-    const turnoComputadora = (puntosMinimos) => {
-
-        let puntosComputadora = 0;
-
-        do{
-
-            const carta = pedirCarta();
-            puntosComputadora = acumularPuntos(puntosJugadores.length-1, carta);
-            crearCarta(puntosJugadores.length-1, carta);
-
-
-        }while((puntosComputadora < puntosMinimos) &&
-            (puntosMinimos <= 21));
+        const [ puntosMinimos, puntosComputadora ] = puntosJugadores;
 
         setTimeout(() => {
             if(puntosMinimos === puntosComputadora){
@@ -112,6 +106,24 @@
                     alert('Ganaste !!');
                 }
         }, 20);
+    }
+
+
+    const turnoComputadora = (puntosMinimos) => {
+
+        let puntosComputadora = 0;
+
+        do{
+
+            const carta = pedirCarta();
+            puntosComputadora = acumularPuntos(puntosJugadores.length-1, carta);
+            crearCarta(puntosJugadores.length-1, carta);
+
+
+        }while((puntosComputadora < puntosMinimos) &&
+            (puntosMinimos <= 21));
+
+        determinarGanador();
     }
 
 
@@ -151,13 +163,14 @@
     btnNuevo.addEventListener('click',() => {
 
         inicializarJuego();
-
-        btnDetener.disabled = false;
-        btnPedir.disabled = false;
-        // puntosJugador = 0;
-        // puntosComputadora = 0;
-        //sumaJugador[0].innerText = 0;
-        //sumaJugador[1].innerText = 0;
-        document.querySelectorAll('.carta').forEach(carta => carta.remove());
     });
+
+
+
+    return {
+      nuevoJuego: inicializarJuego,
+    };
+
 })();
+
+
