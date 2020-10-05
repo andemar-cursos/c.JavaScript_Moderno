@@ -136,19 +136,19 @@ const miModulo = (() => {
     btnPedir.addEventListener('click', () => {
         
         const carta = pedirCarta();
-        const puntosJugador = acumularPuntos(0, carta);
+        puntosJugadores[0] = acumularPuntos(0, carta);
         crearCarta(0, carta);
 
-        if(puntosJugador > 21) {
+        if(puntosJugadores[0] > 21) {
 
             btnPedir.disabled   = true;
             btnDetener.disabled = true;
-            turnoComputadora(puntosJugador);
-        } else if(puntosJugador === 21) {
+            turnoComputadora(puntosJugadores[0]);
+        } else if(puntosJugadores[0] === 21) {
 
             btnPedir.disabled   = true;
             btnDetener.disabled = true;
-            turnoComputadora(puntosJugador);
+            turnoComputadora(puntosJugadores[0]);
         }
     });
 
@@ -157,7 +157,7 @@ const miModulo = (() => {
 
         btnPedir.disabled = true;
         btnDetener.disabled = true;
-        turnoComputadora(puntosJugador);
+        turnoComputadora(puntosJugadores[0]);
     });
 
     btnNuevo.addEventListener('click',() => {
@@ -172,5 +172,3 @@ const miModulo = (() => {
     };
 
 })();
-
-
