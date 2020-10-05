@@ -6,6 +6,7 @@ class Persona {
     nombre;
     codigo;
     frase;
+    comida;
 
     //Constructor
     constructor(nombre, codigo, frase) {
@@ -14,6 +15,15 @@ class Persona {
         this.nombre = nombre;
         this.codigo = codigo;
         this.frase = frase;
+    }
+
+    //Set&Get
+    set setComidaFravorita(comida){
+        this.comida = comida.toUpperCase();
+    }
+
+    get getComidaFavorita() {
+        return this.comida;
     }
 
     //Metodos
@@ -31,3 +41,5 @@ class Persona {
 const spiderman = new Persona('Peter Parker', 'Spiderman', 'Arana !!');
 //spiderman.quienSoy();
 spiderman.miFrase();
+spiderman.setComidaFravorita = 'El pie de cereza de la tia May';
+console.log(spiderman.getComidaFavorita);
