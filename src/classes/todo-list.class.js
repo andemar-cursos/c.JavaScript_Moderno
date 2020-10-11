@@ -32,5 +32,7 @@ export class TodoList{
 
     eliminarCompletados() {
         
+        //Regresa los elementos que no estan completado
+        this.todos = this.todos.filter(todo => !todo.completado);
     }
 }
