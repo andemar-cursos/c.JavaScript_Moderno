@@ -2,16 +2,9 @@ import './styles.css';
 import {Todo, TodoList} from './classes';
 import { crearTodoHtml } from './js/componentes';
 
-// Para evitar las lineas de importacion, se centraliza en index.js
-// import { Todo } from './classes/todo.class';
-// import { TodoList } from './classes/todo-list.class';
-
 export const todoList = new TodoList();
-const tarea = new Todo('aprender js');
-// tarea.completado = true;
 
-todoList.nuevoTodo(tarea);
-
-console.log(todoList);
-
-crearTodoHtml(tarea);
+// Como solo el foreach retorna 1 parametro y
+// crearTodoHtml se le envia 1 solo parametro
+// se puede ignorar en codigo este envio
+todoList.todos.forEach(crearTodoHtml);
