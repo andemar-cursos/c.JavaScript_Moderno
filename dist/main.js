@@ -125,7 +125,7 @@ eval("var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/run
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_componentes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/componentes */ \"./src/js/componentes.js\");\n\r\n\r\nconst nombre = 'andemar';\r\n\r\nObject(_js_componentes__WEBPACK_IMPORTED_MODULE_0__[\"saludar\"])(nombre);\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_componentes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/componentes */ \"./src/js/componentes.js\");\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n\r\n\r\n\r\nconst nombre = 'andemar';\r\n\r\nObject(_js_componentes__WEBPACK_IMPORTED_MODULE_0__[\"saludar\"])(nombre);\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -138,6 +138,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"saludar\", function() { return saludar; });\n/* harmony import */ var _css_componentes_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/componentes.css */ \"./src/css/componentes.css\");\n/* harmony import */ var _css_componentes_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_componentes_css__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nconst saludar = (nombre) => {\r\n    console.log('creando etiqueta h1');\r\n\r\n    const h1 = document.createElement('h1');\r\n    h1.innerText = `hola, ${nombre}`;\r\n\r\n    document.body.append(h1);\r\n}\n\n//# sourceURL=webpack:///./src/js/componentes.js?");
+
+/***/ }),
+
+/***/ "./src/styles.css":
+/*!************************!*\
+  !*** ./src/styles.css ***!
+  \************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack:///./src/styles.css?");
 
 /***/ })
 
