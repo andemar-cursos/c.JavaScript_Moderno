@@ -38,3 +38,17 @@ txtInput.addEventListener('keyup', (event) => {
         txtInput.value = "";
     }
 });
+
+divTodoList.addEventListener('click', (event) => {
+    const nombreElemento = event.target.localName; // Input, label, button
+    const todoElement    = event.target.parentElement.parentElement;
+    const todoId         = todoElement.getAttribute('data-id');
+
+    if(nombreElemento.includes('input')){ //Click en el chek
+        todoList.marcarCompletado(todoId);
+        //Esto inserta una etiqueta que tacha la tarea en la lista html
+        todoElement.classList.toggle('completed');
+    
+    }
+
+});
