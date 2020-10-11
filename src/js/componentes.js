@@ -1,3 +1,5 @@
+import '../css/componentes.css';
+
 export const saludar = (nombre) => {
     console.log('creando etiqueta h1');
 
