@@ -49,6 +49,10 @@ divTodoList.addEventListener('click', (event) => {
         //Esto inserta una etiqueta que tacha la tarea en la lista html
         todoElement.classList.toggle('completed');
     
+    }else if(nombreElemento.includes('button')){
+
+        todoList.eliminarTodo(todoId);
+        divTodoList.removeChild(todoElement);
     }
 
 });
