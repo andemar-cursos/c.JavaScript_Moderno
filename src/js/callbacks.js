@@ -9,7 +9,7 @@ const heroes = {
         nombre: 'Iron Man',
         poder: 'Absurda cantidad de dinero'
     },
-    Spider: {
+    spider: {
         nombre: 'Spider Man',
         poder: 'La mejor reaccion alergica a las picaduras de aranas'
     }
