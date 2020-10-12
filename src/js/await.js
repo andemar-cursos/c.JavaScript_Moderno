@@ -15,3 +15,18 @@ export const obtenerHeroesArr = async() => {
 
     return heroesArr;
 };
+
+
+export const obtenerHeroeAwait = async (heroeId) => {
+    
+    try {
+        return await buscarHeroeAsync(heroeId);
+    } catch (error) {
+        console.log('Catch!!')
+        // throw 'Mensaje de error';
+        return {
+            nombre: 'Sin nombre',
+            poder:  'Sin poder',
+        }
+    }
+}
