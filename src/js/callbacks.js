@@ -1,3 +1,5 @@
+import { call } from "file-loader";
+
 const heroes = {
     capi: {
         nombre: 'capitan america',
@@ -17,5 +19,7 @@ export const buscarHeroe = (heroeId, callback) => {
 
     const heroe = heroes[heroeId];
 
-    callback(heroe);
+    (heroe)
+        ? callback(null, heroe)
+        : callback(`No existe un heroe con el id ${heroeId}`);
 };
