@@ -23,8 +23,20 @@ const heroeId2 = 'spider';
         
 // });
 
-buscarHeroe(heroeId1).then(heroe => {
-    console.log(`Enviando a ${heroe.nombre} a la mision`);
-})
+
+// PROMISE HELL
+// buscarHeroe(heroeId1).then(heroe1 => {
+//     buscarHeroe(heroeId2).then(heroe2 => {
+//         console.log(`Enviando a ${heroe1.nombre} y ${heroe2.nombre} a la mision`);
+//     })
+// })
+
+
+Promise.all([buscarHeroe(heroeId1), buscarHeroe(heroeId2)])
+        // Desestructuracion de arreglos
+        .then( ([heroe1, heroe2]) => {
+            
+            console.log(`Enviando a ${heroe1.nombre} y ${heroe2.nombre} a la mision`);
+});
 
 console.log('Fin del programa')
