@@ -1,7 +1,7 @@
-import {buscarHeroeAsync} from './promesas';
+import {buscarHeroe, buscarHeroeAsync} from './promesas';
 
 const heroesIds = ['capi', 'iron', 'spider'];
-
+const heroesPromesas = heroesIds.map(buscarHeroe);
 
 export const obtenerHeroesArr = async() => {
 
@@ -29,4 +29,29 @@ export const obtenerHeroeAwait = async (heroeId) => {
             poder:  'Sin poder',
         }
     }
+}
+
+
+export const heroesCiclo = async () => {
+
+    console.time('heroesCiclo');
+    
+    // const heroes = await Promise.all(heroesPromesas);
+    // heroes.forEach(console.log);
+    for await(const heroe of heroesPromesas){
+        console.log(heroe);
+    }
+
+
+    console.timeEnd('heroesCiclo');
+
+}
+
+
+export const heroesIf = async () => {
+
+    if( await heroesPromesas[0]){
+        console.log('Resolvio el if');
+    }else
+        console.log('No resolvio el if');
 }
