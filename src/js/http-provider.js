@@ -1,7 +1,7 @@
 import { async } from "q";
 
 const jokeUrl = `https://api.chucknorris.io/jokes/random`;
-const userUrl = `https://reqres.in/api/users?page=2`;
+const userUrl = `https://reqres.in/api/users?page=1`;
 
 const obtenerChiste = async() => {
 

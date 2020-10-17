@@ -1,5 +1,3 @@
-const { init } = require("./js/chistes-page");
-const { obtenerUsuarios } = require("./js/http-provider");
+const { init } = require("./js/usuarios-page");
 
-// init();
-obtenerUsuarios().then(console.log);
+init();
