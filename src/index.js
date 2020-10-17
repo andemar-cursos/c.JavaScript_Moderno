@@ -1,4 +1,3 @@
-const { obtenerChiste } = require("./js/http-provider");
+const { init } = require("./js/chistes-page");
 
-
-obtenerChiste().then(console.log);
+init();
